@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="InflateParams">
+        <ignore path="src/com/hamzah/holothemer/MainActivity.java" />
+    </issue>
+    <issue id="SdCardPath" severity="ignore">
+        <ignore path="src/com/hamzah/holothemer/Backup.java" />
+    </issue>
+    <issue id="SetJavaScriptEnabled" severity="ignore" />
+    <issue id="WorldReadableFiles" severity="ignore" />
+</lint>

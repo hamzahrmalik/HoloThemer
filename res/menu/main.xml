@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_xda"
+        android:title="@string/XDA">
+    </item>
+    <item
+        android:id="@+id/menu_addons"
+        android:title="@string/title_activity_addons">
+    </item>
+    <item
+        android:id="@+id/menu_backup"
+        android:title="@string/title_activity_backup">
+    </item>
+    <item
+        android:id="@+id/menu_reload"
+        android:icon="@drawable/ic_refresh_white_48dp"
+        app:showAsAction="always"
+        android:title="@string/reload">
+    </item>
+    <item
+        android:id="@+id/menu_create_custom"
+        android:title="@string/create_custom">
+    </item>
+
+</menu>

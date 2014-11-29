@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Holo Themer</string>
+    <string name="info">Select an app to change its theme</string>
+    <string name="XDA">Help on XDA</string>
+    <string name="title_activity_addons__store">Holo Themer Add-ons</string>
+    <string name="title_activity_backup">Backup and Restore</string>
+    <string name="backup_info">This screen allows you backup and restore settings to and from your SD</string>
+    <string name="backup">Backup</string>
+    <string name="restore">Restore</string>
+    <string name="title_activity_addons">Addons</string>
+    <string name="addons_info">Add-ons are made for specific apps to help them work with different themes. For example, there is an addon to make the icons down the left of the settings app different colours, to work with different themes</string>
+    <string name="title_installed_addons">Installed Add-ons</string>
+    <string name="getAddon">Get add-ons</string>
+    <string name="reload">Reload</string>
+    <string name="create_custom">Create Custom Theme</string>
+
+</resources>
