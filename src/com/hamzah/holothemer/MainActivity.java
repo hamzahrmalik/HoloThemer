@@ -19,7 +19,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.pm.ResolveInfo;
+import android.content.pm.PackageInfo;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -48,7 +48,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-
 
 public class MainActivity extends ActionBarActivity {
 
@@ -217,8 +216,8 @@ public class MainActivity extends ActionBarActivity {
 				"Light with Dark Actionbar", "Dark - No Actionbar",
 				"Light - No Actionbar", "User Wallpaper",
 				"User Wallpaper - No Titlebar", "Device Default",
-				"Device Default - Light", "Pure Black", "Pure Black - No Titlebar",
-				"User Wallpaper - Semi opaque",
+				"Device Default - Light", "Pure Black",
+				"Pure Black - No Titlebar", "User Wallpaper - Semi opaque",
 				"User Wallpaper - No Titlebar - Semi opaque" };
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, list);
@@ -264,19 +263,16 @@ public class MainActivity extends ActionBarActivity {
 
 	public ArrayList<PInfo> getInstalledApps() {
 		ArrayList<PInfo> res = new ArrayList<PInfo>();
-		Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
-		mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-		List<ResolveInfo> mApps = getPackageManager().queryIntentActivities(
-				mainIntent, 0);
-		int i = 0;
-		while (i < mApps.size()) {
-			ResolveInfo info = mApps.get(i);
-			PInfo p = new PInfo();
-			p.appname = (String) info.loadLabel(getPackageManager());
-			p.pname = info.activityInfo.packageName;
-			p.icon = info.loadIcon(this.getPackageManager());
-			res.add(p);
-			i++;
+		List<PackageInfo> packs = getPackageManager().getInstalledPackages(0);
+		for (int i = 0; i < packs.size(); i++) {
+			PackageInfo p = packs.get(i);
+			PInfo newInfo = new PInfo();
+			newInfo.appname = p.applicationInfo.loadLabel(getPackageManager())
+					.toString();
+			newInfo.pname = p.packageName;
+			newInfo.icon = p.applicationInfo.loadIcon(getPackageManager());
+			if (!newInfo.pname.contains("com.hamzah.holothemer"))
+				res.add(newInfo);
 		}
 		return res;
 	}
