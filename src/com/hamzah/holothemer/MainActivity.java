@@ -23,6 +23,7 @@ import android.content.pm.PackageInfo;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.SearchView;
@@ -136,6 +137,9 @@ public class MainActivity extends ActionBarActivity {
 
 	ListAdapter adapter;
 
+	// does the device support material, ie is higher than API 21
+	boolean material = false;
+
 	class PInfo {
 		private String appname = "";
 		private String pname = "";
@@ -165,6 +169,9 @@ public class MainActivity extends ActionBarActivity {
 				.show();
 
 		checkFirstTime();
+
+		if (Build.VERSION.SDK_INT >= 21)
+			material = true;
 	}
 
 	@SuppressWarnings("deprecation")
@@ -212,15 +219,27 @@ public class MainActivity extends ActionBarActivity {
 		builder.setTitle(pinfos.get(pos).appname);
 		builder.setMessage("What theme do you want this app to use?");
 
-		String[] list = { "Default", "Dark", "Light",
+		String[] list = { "Default", "Holo Dark", "Holo Light",
 				"Light with Dark Actionbar", "Dark - No Actionbar",
 				"Light - No Actionbar", "User Wallpaper",
 				"User Wallpaper - No Titlebar", "Device Default",
 				"Device Default - Light", "Pure Black",
 				"Pure Black - No Titlebar", "User Wallpaper - Semi opaque",
 				"User Wallpaper - No Titlebar - Semi opaque" };
+		if (material)// change the list is supports material
+			list = new String[] { "Default", "Holo Dark", "Holo Light",
+					"Light with Dark Actionbar", "Dark - No Actionbar",
+					"Light - No Actionbar", "User Wallpaper",
+					"User Wallpaper - No Titlebar", "Device Default",
+					"Device Default - Light", "Pure Black",
+					"Pure Black - No Titlebar", "User Wallpaper - Semi opaque",
+					"User Wallpaper - No Titlebar - Semi opaque",
+					"Material Dark", "Material Light",
+					"Material Light with Dark Actionbar" };
+
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, list);
+
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 		spinner = new Spinner(c);

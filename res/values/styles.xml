@@ -1,7 +1,13 @@
 <resources>
 
-    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar"></style>
-
-    <style name="AppTheme" parent="AppBaseTheme"></style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name = "android:actionBarStyle">@style/actionbar</item>
+        <item name="colorPrimaryDark">#00897B</item>
+        <item name="colorPrimary">#009688</item>
+    </style>
+    
+    <style name="actionbar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">#009688</item>
+    </style>
 
 </resources>

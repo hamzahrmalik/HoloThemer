@@ -73,14 +73,6 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit{
 					a.getActionBar().setIcon(new ColorDrawable(a.getResources().getColor(android.R.color.transparent)));
 			}
 		});
-		
-		/*findAndHookMethod(Context.class, "setTheme", int.class, new XC_MethodHook(){
-			@Override
-			protected void beforeHookedMethod(MethodHookParam param)
-					throws Throwable {
-				param.args[0] = android.R.style.Theme_DeviceDefault_Light;
-			}
-		});*/
 	}
 
 	@Override
